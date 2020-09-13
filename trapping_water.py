@@ -5,19 +5,18 @@
 #algorithm: 
 
 def trapped_water (array):  
-	left = "blank"
 	total = 0
 	max_height = largest_element(array) 
 	for x in range(1, max_height + 1):
-	    left = index_of_first_example(array,x) 
-	    right = index_of_last_example(array,x)
-	    for i in range(left + 1, right):
+	    left_column = index_of_first_example_of_value(array,x) 
+	    right_column = index_of_last_example_of_value(array,x) 
+	    for i in range(left_column + 1, right_column):
         	if array[i] < x: 
-        		total = total +  1  
+        		total += 1  
 	return total 
 #Helper Methods below:
 
-def index_of_first_example (array,value):
+def index_of_first_example_of_value (array,value):
      index = 0
      for element in array:
      	if element >= value:
@@ -25,7 +24,7 @@ def index_of_first_example (array,value):
         else: 
         	index += 1
 
-def index_of_last_example (array,value):
+def index_of_last_example_of_value (array,value):
      index = 0
      stored_index = "blank"
      for element in array:
